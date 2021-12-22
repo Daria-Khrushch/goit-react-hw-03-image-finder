@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import s from './Searchbar.module.css';
 
@@ -11,21 +12,24 @@ class Searchbar extends React.Component {
     this.setState({ searchbar: event.currentTarget.value.toLowerCase() });
   };
 
-  handleSabmit = event => {
+  handleSubmit = event => {
     event.preventDefault();
 
-    if (this.state.searchbar.trim() === '') {
-      toast.error('Error! Еnter something');
+    const { searchbar } = this.state;
+
+    if (searchbar.trim() === '') {
+      toast.error('Error! Enter something');
+      this.setState({ searchbar: '' });
       return;
     }
-    this.props.onNameSabmit(this.state.searchbar);
+    this.props.onSubmit(searchbar);
     this.setState({ searchbar: '' });
   };
 
   render() {
     return (
       <header className={s.Searchbar}>
-        <form onSubmit={this.handleSabmit} className={s.SearchForm}>
+        <form onSubmit={this.handleSubmit} className={s.SearchForm}>
           <button type="submit" className={s.SearchFormButton}>
             <span className={s.SearchFormButtonLabel}>Search</span>
           </button>
@@ -44,5 +48,9 @@ class Searchbar extends React.Component {
     );
   }
 }
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func,
+};
 
 export { Searchbar };

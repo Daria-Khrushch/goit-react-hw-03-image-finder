@@ -22,9 +22,9 @@ const ImageGalleryItem = ({
 
 ImageGalleryItem.propTypes = {
   webformatURL: PropTypes.string.isRequired,
-  tags: PropTypes.string.isRequired,
+  tags: PropTypes.string,
   largeImageURL: PropTypes.string.isRequired,
-  onOpenModal: PropTypes.string.isRequired,
+  onOpenModal: PropTypes.func.isRequired,
 };
 
 export default ImageGalleryItem;

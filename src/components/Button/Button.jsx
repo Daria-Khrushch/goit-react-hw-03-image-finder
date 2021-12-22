@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import s from './Button.module.css';
 
-function Button({ LoadMoreBtn }) {
+function Button({ onClick }) {
   return (
-    <button type="button" className={s.Button} onClick={LoadMoreBtn}>
+    <button type="button" className={s.Button} onClick={onClick}>
       Load more
     </button>
   );
 }
 
 Button.propTypes = {
-  LoadMoreBtn: PropTypes.func.isRequired,
+  loadMoreBtn: PropTypes.func,
 };
 
 export { Button };

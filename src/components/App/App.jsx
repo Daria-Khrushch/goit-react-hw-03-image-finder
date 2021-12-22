@@ -6,20 +6,20 @@ import { ImageGallery } from '../ImageGallery/ImageGallery';
 
 class App extends React.Component {
   state = {
-    imageName: '',
+    searchQuery: '',
     searchbar: '',
   };
 
-  handleFormSubmit = imageName => {
-    this.setState({ imageName });
+  handleFormSubmit = searchQuery => {
+    this.setState({ searchQuery });
   };
 
   render() {
     return (
       <div>
-        <Searchbar onNameSabmit={this.handleFormSubmit} />
+        <Searchbar onSubmit={this.handleFormSubmit} />
 
-        <ImageGallery imageName={this.state.imageName}></ImageGallery>
+        <ImageGallery searchQuery={this.state.searchQuery} />
 
         <ToastContainer autoClose={3000} />
       </div>

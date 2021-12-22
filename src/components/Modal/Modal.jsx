@@ -1,5 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
@@ -13,7 +14,6 @@ class Modal extends React.Component {
     window.removeEventListener('keydown', this.onEscClick);
   }
 
-  //-----------------закрыть по ESС---------------------
   onEscClick = event => {
     const ESC_KEY_CODE = 'Escape';
 
@@ -22,7 +22,6 @@ class Modal extends React.Component {
     }
   };
 
-  //-------------закрыть по onBackdropClick(event)----------
   onBackdropClick = event => {
     if (event.currentTarget === event.target) {
       this.props.onClose();
@@ -40,5 +39,9 @@ class Modal extends React.Component {
     );
   }
 }
+
+Modal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
 
 export { Modal };
